@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>VersFx.Formats.Text.Epub</id>
+    <version>1.0.1</version>
+    <title>EPUB reader</title>
+    <authors>vers</authors>
+    <owners>vers</owners>
+    <licenseUrl>https://github.com/versfx/EpubReader/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/versfx/EpubReader</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>.NET library for reading EPUB files</description>
+    <copyright>Unlicense &lt;http://unlicense.org&gt;</copyright>
+    <tags>epub</tags>
+  </metadata>
+</package>

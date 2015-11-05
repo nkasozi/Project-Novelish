@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <setParameter name="IIS Web Application Name" value="www.pegasus.co.ug/Soma" />
+  <setParameter name="DefaultConnection-Web.config Connection String" value="Data Source=BIGBOSS\WORKDB;Initial Catalog=Soma;User ID=sa;Password=T3rr1613" />
+  <setParameter name="TestConnectionString-Web.config Connection String" value="Data Source=BIGBOSS\WORKDB;Initial Catalog=TestDB;User ID=sa;Password=T3rr1613" />
+  <setParameter name="AppDbContext-Web.config Connection String" value="Data Source=BIGBOSS\WORKDB;Initial Catalog=Soma;User ID=sa;Password=T3rr1613" />
+</parameters>
