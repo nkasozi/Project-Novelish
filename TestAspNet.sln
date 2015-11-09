@@ -7,7 +7,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "TestAspNet", "http://localh
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "true"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
-		ProjectReferences = ""
+		ProjectReferences = "{6550dff4-2694-4076-adfe-96465269f959}|EbookReaderLib.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_50581"
 		Debug.AspNetCompiler.PhysicalPath = "TestAspNet\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50581\"
@@ -33,6 +33,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{712B84
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tester", "Tester\Tester.csproj", "{EBE804B9-8425-4638-8815-3A31DAC80099}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EbookReaderLib", "EbookReaderLib\EbookReaderLib.csproj", "{6550DFF4-2694-4076-ADFE-96465269F959}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +47,14 @@ Global
 		{3C643D98-5837-490D-909A-99266EB64F76}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C643D98-5837-490D-909A-99266EB64F76}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{3C643D98-5837-490D-909A-99266EB64F76}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{EBE804B9-8425-4638-8815-3A31DAC80099}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBE804B9-8425-4638-8815-3A31DAC80099}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBE804B9-8425-4638-8815-3A31DAC80099}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBE804B9-8425-4638-8815-3A31DAC80099}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6550DFF4-2694-4076-ADFE-96465269F959}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6550DFF4-2694-4076-ADFE-96465269F959}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6550DFF4-2694-4076-ADFE-96465269F959}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6550DFF4-2694-4076-ADFE-96465269F959}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
