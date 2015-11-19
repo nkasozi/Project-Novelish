@@ -28,6 +28,14 @@ namespace EbookReaderLib
             {
                 HtmlDocument doc = new HtmlDocument();
                 doc.Load(filePath, Encoding.UTF8);
+                
+                //foreach (HtmlNode link in doc.DocumentNode.SelectNodes("//img[@src]"))
+                //{
+                //    HtmlAttribute att = link.Attributes["src"];
+                //    string imageFileName = GetImageName(att.Value);
+                //    att.Value = System.Web.HttpContext.Current.Server.MapPath("~/Images/" + imageFileName);
+                //}
+
                 string bodyText = doc.DocumentNode.SelectSingleNode("//body").InnerHtml;
                 ChapterContent = bodyText;
                 Title = "";
@@ -36,6 +44,21 @@ namespace EbookReaderLib
             {
             
             }
+        }
+
+        private string GetImageName(string imageNameString)
+        {
+            string result = "";
+            try
+            {
+                string[] part = imageNameString.Split('/');
+                result = part[(part.Length - 1)];
+            }
+            catch (Exception)
+            {
+                result = imageNameString;
+            }
+            return result;
         }
 
 

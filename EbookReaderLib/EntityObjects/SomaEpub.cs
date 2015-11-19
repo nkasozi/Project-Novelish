@@ -2,6 +2,7 @@
 using ICSharpCode.SharpZipLib.Zip;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -37,7 +38,8 @@ namespace EbookReaderLib
             FileName = Path.GetFileNameWithoutExtension(FilePath);
             string FileDirectory = Path.GetDirectoryName(FilePath);
             Password = "";
-            string outPutFilePath = FileDirectory + @"\" + FileName + @"_Unzipped\";
+            string TimeNow = DateTime.Now.ToString("dd_MM_yyyy_HH_mm_ss_fff");
+            string outPutFilePath = FileDirectory + @"\" + FileName + @"_Unzipped_" + TimeNow + @"\";
             bool success = ExtractZipFile(FilePath, Password, outPutFilePath);
 
             if (success)
@@ -48,12 +50,39 @@ namespace EbookReaderLib
                 Title = GetEbookTitle(outPutFilePath);
                 Author = GetEbookAurthor(outPutFilePath);
                 Publisher = GetEbookPublisher(outPutFilePath);
+                //SaveEpubImages(outPutFilePath);
             }
             else
             {
                 throw new Exception("UNABLE TO EXTRACT EPUB CONTENTS. FILE MAYBE CORRUPTED");
             }
 
+        }
+
+        private void SaveEpubImages(string outPutFilePath)
+        {
+            try
+            {
+                string[] ImagesDirectories = Directory.GetDirectories(outPutFilePath, "*", SearchOption.AllDirectories);
+                foreach (string ImagesDir in ImagesDirectories)
+                {
+                    if (ImagesDir.ToUpper().Contains("IMAGE"))
+                    {
+                        string[] imagesFiles = Directory.GetFiles(ImagesDir);
+                        foreach (string image in imagesFiles)
+                        {
+                            Bitmap bitmap = new Bitmap(image);
+                            string imageFileName = Path.GetFileName(image);
+                            string savePath = System.Web.HttpContext.Current.Server.MapPath("~/Images/" + imageFileName);
+                            bitmap.Save(savePath);
+                        }
+                    }
+                }
+            }
+            catch (Exception e) 
+            {
+            
+            }
         }
 
         private string GetEbookTitle(string outPutFilePath)
@@ -83,11 +112,11 @@ namespace EbookReaderLib
                 {
                     Title = reader.ReadElementContentAsString();
                 }
-                
+
             }
             catch (Exception ex)
             {
-               
+
             }
             return Title;
         }
@@ -182,7 +211,7 @@ namespace EbookReaderLib
                     return filepath;
                 }
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 return filepath;
             }
@@ -241,14 +270,14 @@ namespace EbookReaderLib
 
                 }
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 throw new Exception("UNABLE TO READ EPUB: " + ex.Message);
             }
             return allChapters;
         }
 
-        private List<SomaEpubChapter> OrderChapters(string outPutFilePath,List<SomaEpubChapter> Chapters)
+        private List<SomaEpubChapter> OrderChapters(string outPutFilePath, List<SomaEpubChapter> Chapters)
         {
             List<SomaEpubChapter> allChapters = new List<SomaEpubChapter>();
 
@@ -299,7 +328,7 @@ namespace EbookReaderLib
                     }
                 }
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 throw new Exception("UNABLE TO ORDER CHAPTERS IN EPUB: " + ex.Message);
             }
@@ -307,7 +336,7 @@ namespace EbookReaderLib
         }
 
 
-       
+
 
         public bool ExtractZipFile(string archiveFilenameIn, string password, string outFolder)
         {
@@ -343,9 +372,17 @@ namespace EbookReaderLib
                     // Unzip file in buffered chunks. This is just as fast as unpacking to a buffer the full size
                     // of the file, but does not waste memory.
                     // The "using" will close the stream even if an exception occurs.
-                    using (FileStream streamWriter = File.Create(fullZipToPath))
+                    if (File.Exists(fullZipToPath))
                     {
+                        FileStream streamWriter = new FileStream(fullZipToPath, FileMode.Open, FileAccess.Read);
                         StreamUtils.Copy(zipStream, streamWriter, buffer);
+                    }
+                    else
+                    {
+                        using (FileStream streamWriter = File.Create(fullZipToPath))
+                        {
+                            StreamUtils.Copy(zipStream, streamWriter, buffer);
+                        }
                     }
                     zipStream.Close();
 
