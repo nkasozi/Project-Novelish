@@ -18,10 +18,10 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:52722/TestDBApi/Service.asmx?WSDL" Protocol="http" SourceId="1" />
+    <MetadataSource Address="https://192.168.0.3/TestDatabaseApi/Service.asmx?WSDL" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Service.wsdl" MetadataType="Wsdl" ID="e01155f8-2263-4381-9427-3bf1586a4d78" SourceId="1" SourceUrl="http://localhost:52722/TestDBApi/Service.asmx?WSDL" />
+    <MetadataFile FileName="Service.wsdl" MetadataType="Wsdl" ID="e9a29991-bbec-4164-960d-1062dfa00a93" SourceId="1" SourceUrl="https://192.168.0.3/TestDatabaseApi/Service.asmx?WSDL" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

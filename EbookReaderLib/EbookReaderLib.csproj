@@ -71,6 +71,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\System.Data.DataSet.datasource" />
     <None Include="Properties\DataSources\System.Data.DataTable.datasource" />
     <None Include="Service References\SomaDbApi\EbookReaderLib.SomaDbApi.Result.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>

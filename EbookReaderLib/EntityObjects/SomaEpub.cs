@@ -21,43 +21,85 @@ namespace EbookReaderLib
         public string FileName { get; set; }
         public string FileExt { get; set; }
         public string PathToCoverImage { get; set; }
-
         private string Password { get; set; }
+        private string PathToImagesFolder { get; set; }
+        public string OutPutFolderPath { get; set; }
 
         public List<SomaEpubChapter> Chapters = new List<SomaEpubChapter>();
 
-        public SomaEpub(string pathToEpub)
+        public SomaEpub(string pathToEpub, string pathToImagesFolder)
+        {
+            ExtractAndReadEpub(pathToEpub, pathToImagesFolder);
+        }
+
+        private void ExtractAndReadEpub(string pathToEpub, string pathToImagesFolder)
         {
             if (!pathToEpub.ToUpper().Contains(".EPUB"))
             {
                 throw new Exception("INVALID FILE FORMAT. PLEASE GIVE PATH TO VALID EPUB");
             }
-
+            PathToImagesFolder = pathToImagesFolder;
+            Password = "";
             FilePath = pathToEpub;
             FileExt = Path.GetExtension(FilePath);
             FileName = Path.GetFileNameWithoutExtension(FilePath);
             string FileDirectory = Path.GetDirectoryName(FilePath);
-            Password = "";
             string TimeNow = DateTime.Now.ToString("dd_MM_yyyy_HH_mm_ss_fff");
-            string outPutFilePath = FileDirectory + @"\" + FileName + @"_Unzipped_" + TimeNow + @"\";
-            bool success = ExtractZipFile(FilePath, Password, outPutFilePath);
+            OutPutFolderPath = FileDirectory + @"\" + FileName + @"_Unzipped_" + TimeNow + @"\";
+            bool success = ExtractZipFile(FilePath, Password, OutPutFolderPath);
 
             if (success)
             {
-                Chapters = ReadManifest(outPutFilePath);
-                Chapters = OrderChapters(outPutFilePath, Chapters);
-                PathToCoverImage = GetCoverImagePath(outPutFilePath);
-                Title = GetEbookTitle(outPutFilePath);
-                Author = GetEbookAurthor(outPutFilePath);
-                Publisher = GetEbookPublisher(outPutFilePath);
+                Chapters = ReadManifest(OutPutFolderPath);
+                Chapters = OrderChapters(OutPutFolderPath, Chapters);
+                PathToCoverImage = GetCoverImagePath(OutPutFolderPath);
+                Title = GetEbookTitle(OutPutFolderPath);
+                Author = GetEbookAurthor(OutPutFolderPath);
+                Publisher = GetEbookPublisher(OutPutFolderPath);
                 //SaveEpubImages(outPutFilePath);
             }
             else
             {
                 throw new Exception("UNABLE TO EXTRACT EPUB CONTENTS. FILE MAYBE CORRUPTED");
             }
-
         }
+
+        public void ReadAlreadyExtractedEpub(string pathToEpub, string pathToImagesFolder, string PathToExtractFolder) 
+        {
+            PathToImagesFolder = pathToImagesFolder;
+            Password = "";
+            FilePath = pathToEpub;
+            FileExt = Path.GetExtension(FilePath);
+            FileName = Path.GetFileNameWithoutExtension(FilePath);
+            string FileDirectory = Path.GetDirectoryName(FilePath);
+            OutPutFolderPath = PathToExtractFolder;
+
+            Chapters = ReadManifest(OutPutFolderPath);
+            Chapters = OrderChapters(OutPutFolderPath, Chapters);
+            PathToCoverImage = GetCoverImagePath(OutPutFolderPath);
+            Title = GetEbookTitle(OutPutFolderPath);
+            Author = GetEbookAurthor(OutPutFolderPath);
+            Publisher = GetEbookPublisher(OutPutFolderPath);
+        }
+        
+
+        public SomaEpub(string pathToEpub, string pathToImagesFolder, string PathToExtractFolder)
+        {
+            if (!pathToEpub.ToUpper().Contains(".EPUB"))
+            {
+                throw new Exception("INVALID FILE FORMAT. PLEASE GIVE PATH TO VALID EPUB");
+            }
+            else if (string.IsNullOrEmpty(PathToExtractFolder))
+            {
+                ExtractAndReadEpub(pathToEpub, pathToImagesFolder);
+            }
+            else 
+            {
+                ReadAlreadyExtractedEpub(pathToEpub, pathToImagesFolder, PathToExtractFolder);
+            }
+           
+        }
+
 
         private void SaveEpubImages(string outPutFilePath)
         {
@@ -79,9 +121,9 @@ namespace EbookReaderLib
                     }
                 }
             }
-            catch (Exception e) 
+            catch (Exception e)
             {
-            
+
             }
         }
 
@@ -252,6 +294,7 @@ namespace EbookReaderLib
                             //string FilePath to chapter
                             string fileName = reader.GetAttribute("href").Replace("/", @"\");
 
+                            //if its an html file
                             if (fileName.Contains(".html") || fileName.Contains(".xhtml"))
                             {
                                 fileName = outPutFilePath + fileName;
@@ -264,6 +307,19 @@ namespace EbookReaderLib
                                 //increment chapter count
                                 count++;
                             }
+                            //its an Resource file
+                            else
+                            {
+                                fileName = outPutFilePath + fileName;
+
+                                string extension = Path.GetExtension(fileName);
+
+                                if (extension == ".jpg" || extension == ".jpeg" || extension == ".png")
+                                {
+                                    SaveImageInImagesVirtualDirectory(fileName);
+                                }
+
+                            }
                         }
                     }
 
@@ -275,6 +331,20 @@ namespace EbookReaderLib
                 throw new Exception("UNABLE TO READ EPUB: " + ex.Message);
             }
             return allChapters;
+        }
+
+        private void SaveImageInImagesVirtualDirectory(string pathToImageFile)
+        {
+            try
+            {
+                Image image = Image.FromFile(pathToImageFile);
+                string fileName = PathToImagesFolder + Path.GetFileName(pathToImageFile);
+                image.Save(fileName);
+            }
+            catch (Exception e)
+            {
+
+            }
         }
 
         private List<SomaEpubChapter> OrderChapters(string outPutFilePath, List<SomaEpubChapter> Chapters)

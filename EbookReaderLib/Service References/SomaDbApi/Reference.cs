@@ -13,18 +13,20 @@ namespace EbookReaderLib.SomaDbApi {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://pegasus.co.ug/", ConfigurationName="SomaDbApi.ServiceSoap")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="https://pegasus.co.ug/", ConfigurationName="SomaDbApi.ServiceSoap")]
     public interface ServiceSoap {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://pegasus.co.ug/ExecuteInsert", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="https://pegasus.co.ug/ExecuteNonQuery", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
-        EbookReaderLib.SomaDbApi.Result ExecuteInsert(string conString, string storedProcedureName, object[] Parameters);
+        EbookReaderLib.SomaDbApi.Result ExecuteNonQuery(string conString, string storedProcedureName, string[] Parameters);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://pegasus.co.ug/ExecuteSelect", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="https://pegasus.co.ug/ExecuteSelect", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
-        System.Data.DataTable ExecuteSelect(string conString, string storedProcedureName, object[] Parameters);
+        System.Data.DataTable ExecuteSelect(string conString, string storedProcedureName, string[] Parameters);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="https://pegasus.co.ug/ExecuteDataSet", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataSet ExecuteDataSet(string conString, string storedProcedureName, string[] Parameters);
     }
     
     /// <remarks/>
@@ -32,7 +34,7 @@ namespace EbookReaderLib.SomaDbApi {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://pegasus.co.ug/")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="https://pegasus.co.ug/")]
     public partial class Result : object, System.ComponentModel.INotifyPropertyChanged {
         
         private string statusCodeField;
@@ -114,12 +116,16 @@ namespace EbookReaderLib.SomaDbApi {
                 base(binding, remoteAddress) {
         }
         
-        public EbookReaderLib.SomaDbApi.Result ExecuteInsert(string conString, string storedProcedureName, object[] Parameters) {
-            return base.Channel.ExecuteInsert(conString, storedProcedureName, Parameters);
+        public EbookReaderLib.SomaDbApi.Result ExecuteNonQuery(string conString, string storedProcedureName, string[] Parameters) {
+            return base.Channel.ExecuteNonQuery(conString, storedProcedureName, Parameters);
         }
         
-        public System.Data.DataTable ExecuteSelect(string conString, string storedProcedureName, object[] Parameters) {
+        public System.Data.DataTable ExecuteSelect(string conString, string storedProcedureName, string[] Parameters) {
             return base.Channel.ExecuteSelect(conString, storedProcedureName, Parameters);
+        }
+        
+        public System.Data.DataSet ExecuteDataSet(string conString, string storedProcedureName, string[] Parameters) {
+            return base.Channel.ExecuteDataSet(conString, storedProcedureName, Parameters);
         }
     }
 }

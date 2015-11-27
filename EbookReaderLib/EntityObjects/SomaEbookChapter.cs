@@ -15,7 +15,7 @@ namespace EbookReaderLib
         public string FullFileName { get; set; }
         public int IndexOfChapter { get; set; }
 
-        public SomaEpubChapter(string filePath,int indexOfChapter) 
+        public SomaEpubChapter(string filePath, int indexOfChapter)
         {
             FullFileName = filePath;
             IndexOfChapter = indexOfChapter;
@@ -28,21 +28,15 @@ namespace EbookReaderLib
             {
                 HtmlDocument doc = new HtmlDocument();
                 doc.Load(filePath, Encoding.UTF8);
-                
-                //foreach (HtmlNode link in doc.DocumentNode.SelectNodes("//img[@src]"))
-                //{
-                //    HtmlAttribute att = link.Attributes["src"];
-                //    string imageFileName = GetImageName(att.Value);
-                //    att.Value = System.Web.HttpContext.Current.Server.MapPath("~/Images/" + imageFileName);
-                //}
 
                 string bodyText = doc.DocumentNode.SelectSingleNode("//body").InnerHtml;
-                ChapterContent = bodyText;
+                string sanitizedHtml = bodyText.Replace("<image", "<img").Replace("xlink:href", "src").Replace("</image>", "</img>");
+                ChapterContent = sanitizedHtml;
                 Title = "";
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
-            
+
             }
         }
 
