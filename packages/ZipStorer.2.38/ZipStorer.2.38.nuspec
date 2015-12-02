@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>ZipStorer</id>
+    <version>2.38</version>
+    <title>ZipStorer</title>
+    <authors>Jaime Olivares</authors>
+    <owners>Jaime Olivares</owners>
+    <licenseUrl>http://github.com/jaime-olivares/zipstorer</licenseUrl>
+    <projectUrl>http://github.com/jaime-olivares/zipstorer</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A Pure C# class to store files in Zip</description>
+    <summary>A Pure C# class to store files in Zip</summary>
+    <releaseNotes />
+    <tags>C# zip</tags>
+  </metadata>
+</package>

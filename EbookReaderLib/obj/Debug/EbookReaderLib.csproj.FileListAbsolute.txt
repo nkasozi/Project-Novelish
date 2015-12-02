@@ -1,0 +1,10 @@
+C:\Users\DELL\Documents\Visual Studio 2013\Projects\TestAspNet_1\EbookReaderLib\bin\Debug\EbookReaderLib.pdb
+C:\Users\DELL\Documents\Visual Studio 2013\Projects\TestAspNet_1\EbookReaderLib\bin\Debug\HtmlAgilityPack.dll
+C:\Users\DELL\Documents\Visual Studio 2013\Projects\TestAspNet_1\EbookReaderLib\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\DELL\Documents\Visual Studio 2013\Projects\TestAspNet_1\EbookReaderLib\bin\Debug\HtmlAgilityPack.xml
+C:\Users\DELL\Documents\Visual Studio 2013\Projects\TestAspNet_1\EbookReaderLib\obj\Debug\EbookReaderLib.pdb
+C:\Users\DELL\Documents\Visual Studio 2013\Projects\TestAspNet_1\EbookReaderLib\bin\Debug\EbookReaderLib.dll.config
+C:\Users\DELL\Documents\Visual Studio 2013\Projects\TestAspNet_1\EbookReaderLib\bin\Debug\EbookReaderLib.dll
+C:\Users\DELL\Documents\Visual Studio 2013\Projects\TestAspNet_1\EbookReaderLib\obj\Debug\EbookReaderLib.dll
+C:\Users\DELL\Documents\Visual Studio 2013\Projects\TestAspNet_1\EbookReaderLib\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Users\DELL\Documents\Visual Studio 2013\Projects\TestAspNet_1\EbookReaderLib\obj\Debug\EbookReaderLib.csprojResolveAssemblyReference.cache

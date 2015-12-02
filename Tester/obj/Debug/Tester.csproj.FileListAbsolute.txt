@@ -1,0 +1,17 @@
+C:\Users\DELL\Documents\Visual Studio 2013\Projects\TestAspNet_1\Tester\bin\Debug\Tester.exe.config
+C:\Users\DELL\Documents\Visual Studio 2013\Projects\TestAspNet_1\Tester\bin\Debug\Tester.exe
+C:\Users\DELL\Documents\Visual Studio 2013\Projects\TestAspNet_1\Tester\bin\Debug\Tester.pdb
+C:\Users\DELL\Documents\Visual Studio 2013\Projects\TestAspNet_1\Tester\bin\Debug\eBdb.EpubReader.dll
+C:\Users\DELL\Documents\Visual Studio 2013\Projects\TestAspNet_1\Tester\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Users\DELL\Documents\Visual Studio 2013\Projects\TestAspNet_1\Tester\bin\Debug\ZipStorer.dll
+C:\Users\DELL\Documents\Visual Studio 2013\Projects\TestAspNet_1\Tester\bin\Debug\Ionic.Zip.dll
+C:\Users\DELL\Documents\Visual Studio 2013\Projects\TestAspNet_1\Tester\obj\Debug\Tester.exe
+C:\Users\DELL\Documents\Visual Studio 2013\Projects\TestAspNet_1\Tester\obj\Debug\Tester.pdb
+C:\Users\DELL\Documents\Visual Studio 2013\Projects\TestAspNet_1\Tester\bin\Debug\HtmlAgilityPack.dll
+C:\Users\DELL\Documents\Visual Studio 2013\Projects\TestAspNet_1\Tester\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\DELL\Documents\Visual Studio 2013\Projects\TestAspNet_1\Tester\bin\Debug\HtmlAgilityPack.xml
+C:\Users\DELL\Documents\Visual Studio 2013\Projects\TestAspNet_1\Tester\obj\Debug\Tester.csprojResolveAssemblyReference.cache
+C:\Users\DELL\Documents\Visual Studio 2013\Projects\TestAspNet_1\Tester\bin\Debug\EbookReaderLib.dll
+C:\Users\DELL\Documents\Visual Studio 2013\Projects\TestAspNet_1\Tester\bin\Debug\EbookReaderLib.pdb
+C:\Users\DELL\Documents\Visual Studio 2013\Projects\TestAspNet_1\Tester\bin\Debug\itextsharp.dll
+C:\Users\DELL\Documents\Visual Studio 2013\Projects\TestAspNet_1\Tester\bin\Debug\itextsharp.xml
